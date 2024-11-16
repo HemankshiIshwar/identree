@@ -1,0 +1,8 @@
+# Ignore large model files
+*.h5
+*.pkl
+*.zip
+*.tar.gz
+
+# Ignore data directory (if you have one)
+data/

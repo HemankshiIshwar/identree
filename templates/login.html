@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Identree | Login</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <!-- Styling -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"
+    id="bootstrap-css">
+  <!-- Icon -->
+  <link rel="icon" type="image/x-icon" href="static/css/vectors/logo.ico">
+
+</head>
+
+<body>
+  <!-- Form UI reffered from: https://bootsnipp.com/snippets/dldxB -->
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <div class="text-center">
+        <button type="button" id="closeButton" class="close mx-2" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h5 class="text-center mt-3">Welcome back, tree enthusiast!</h5>
+        <!-- Icon -->
+        <div class="fadeIn first mt-3">
+          <a class="navbar-brand logo" href="/">
+            <img height="auto" width="100" src="{{ url_for('static', filename='css/vectors/logo.png') }}" alt="Logo">
+          </a>
+          <h4>Identree</h4>
+        </div>
+      </div>
+
+      <!-- Login Form -->
+      <form class="form-group mt-3" action="{{ url_for('login') }}" method="post">
+        <input type="text" class="fadeIn second" name="username" placeholder="Username" id="username" required>
+        <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" id="password"
+          required>
+        <input type="submit" class="fadeIn fourth btn btn-success mt-3" value="Login">
+      </form>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+
+      <!-- Form Footer -->
+      <div id="formFooter">
+        <p>No account? Just <a class="underlineHover" href="{{ url_for('register') }}">Sign Up!</a></p>
+      </div>
+    </div>
+  </div>
+  <script src="{{url_for('static', filename='index.js')}}"></script>
+</body>
+
+</html>

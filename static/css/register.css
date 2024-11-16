@@ -1,0 +1,125 @@
+/* Mobile-first styles (applies to all screen sizes) */
+.logo-container {
+    color: #1f8f39;
+}
+
+#reg {
+    perspective: 1000px;
+    margin-top: 20px; /* Reduced margin for smaller screens */
+    margin-left: 5%; /* Adjusted margin for smaller screens */
+}
+
+.main-reg {
+    font-family: 'Josefin Sans', sans-serif;
+    transition: .3s;
+    transform: rotateY(20deg);
+}
+
+.main-reg:hover {
+    transform: rotate(0);
+}
+
+.main-reg.form-group {
+    margin-bottom: 15px; /* Reduced margin for smaller screens */
+}
+
+.main-reg.form-control,
+.main-reg.btn {
+    border-radius: 0;
+}
+
+.main-reg.btn {
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Reduced letter-spacing for smaller screens */
+}
+
+#inner-wrapper {
+    color: #1d1d1d;
+    font-size: 16px; /* Smaller font size for smaller screens */
+    line-height: 1.5em; /* Adjusted line height for smaller screens */
+    font-weight: 300;
+    padding: 20px; /* Reduced padding for smaller screens */
+    background: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    margin-bottom: 50px; /* Reduced margin for smaller screens */
+}
+
+.input-group-addon {
+    padding: 8px; /* Reduced padding for smaller screens */
+    border-radius: 0;
+    color: #fff;
+    background: #1f8f39;
+    border: #1f8f39;
+}
+
+#formFooter {
+    background-color: #f6f6f6;
+    border-top: 1px solid #dce8f1;
+    padding: 15px; /* Reduced padding for smaller screens */
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+}
+
+/* Media query for screens larger than 768px (tablets and desktops) */
+@media (min-width: 768px) {
+    .logo {
+        width: 50px; /* Adjusted width for larger screens */
+    }
+
+    #reg {
+        margin-left: 30%; /* Restored margin for larger screens */
+    }
+
+    .main-reg {
+        transform: rotateY(0);
+    }
+
+    .main-reg.form-group {
+        margin-bottom: 17px; /* Restored margin for larger screens */
+    }
+
+    .main-reg.btn {
+        letter-spacing: 3px;
+    }
+
+    #inner-wrapper {
+        font-size: 19px;
+        line-height: 1.7em;
+        padding: 50px;
+        margin-bottom: 100px;
+    }
+
+    .input-group-addon {
+        padding: 10px;
+    }
+
+    #formFooter {
+        padding: 25px;
+    }
+    .underlineHover{
+        color: #1f8f39;
+    }
+    .underlineHover:after {
+        display: block;
+        left: 0;
+        bottom: -10px;
+        width: 0;
+        height: 2px;
+        background-color: #1f8f39;
+        content: "";
+        transition: width 0.2s;
+    }
+    
+    .underlineHover:hover {
+        color: #1f8f39;
+    }
+    
+    .underlineHover:hover:after {
+        width: 100%;
+    }
+}
+
+/* Media query for screens larger than 992px (large desktops) */
+@media (min-width: 992px) {
+    /* Add additional styling for even larger screens if needed */
+}

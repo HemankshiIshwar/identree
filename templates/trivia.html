@@ -1,0 +1,113 @@
+{% extends 'layout.html' %}
+
+{% block title %}Identree | Trivia{% endblock %}
+
+{% block content %}
+
+
+
+
+<div class="container">
+    <h1>Tree Trivia</h1>
+    <div class="row m-3">
+        <!-- User Score Card  -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <i class="fas fa-trophy fa-4x"></i>
+                    <div>
+                        <h5 class="card-title text-center mt-2">Your Score</h5>
+                        <p class="card-text h1 text-center"> {{ user_score }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Scores Card -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <h5 class="card-title">Top 3 Scores</h5>
+                    <ol class="card-text">
+                        {% for score in top_scores %}
+                        <li>{{ score['username'] }} : {{ score['score'] }}</li>
+                        {% endfor %}
+                    </ol>
+                    <i class="fas fa-medal fa-4x"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz content from Woodland Trust Summer Quiz | Link: https://www.woodlandtrust.org.uk/blog/2020/07/summer-tree-identification-quiz/ -->
+    {% for question in random_questions %}
+    <form method="post" id="trivia-form" class="text-center">
+        <div class="question-container">
+            <h2>{{ question['question']}}</h2>
+            <p>{{ question['description']}}</p>
+            <div class="question-image-container">
+                <img class="question-image" src="{{ url_for('static', filename=question['image_path']) }}"
+                    alt="question image">
+            </div>
+            <div class="d-flex flex-column align-items-center">
+                <!-- Use flex-column and align-items-center to center vertically -->
+                {% for option in question['options'] %}
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="answer_{{ question['id'] }}_{{ loop.index0 }}"
+                        name="answer_{{ question['id'] }}" value="{{ loop.index0 }}">
+                    <label class="form-check-label" for="answer_{{ question['id'] }}_{{ loop.index0 }}">
+                        <h5>{{ option }}</h5>
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-large btn-success mt-3" id="submitBtn" value="Submit">
+    </form>
+
+    <div id="result-message-container">
+    </div>
+
+    {% endfor %}
+</div>
+
+<script>
+// Get a reference to the form and the submit button
+const triviaForm = document.getElementById('trivia-form');
+const submitButton = document.getElementById('submitBtn');
+const closeModal = document.getElementById('closeModal');
+closeModal.addEventListener('click', () => {
+    $('#shareModal').modal('hide');
+});
+
+const closeCross = document.getElementById('closeCross');
+closeCross.addEventListener('click', () => {
+    $('#shareModal').modal('hide');
+});
+// Add an event listener to the form submission
+triviaForm.addEventListener('submit', function (event) {
+    // Prevent the form from submitting by default
+    event.preventDefault();
+
+    // Check if at least one radio button is selected
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    let atLeastOneSelected = false;
+
+    radioButtons.forEach(function (radioButton) {
+        if (radioButton.checked) {
+            atLeastOneSelected = true;
+        }
+    });
+
+    // If at least one radio button is selected, submit the form
+    if (atLeastOneSelected) {
+        triviaForm.submit();
+    } else {
+        // If no radio button is selected, show an error message or alert
+        alert('Please select an answer before submitting.');
+    }
+});
+</script>
+
+{% endblock %}

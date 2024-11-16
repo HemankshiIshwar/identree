@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+<!-- Title -->
+{% block title %}Identree | Home{% endblock %}
+
+{% block content %}
+<!-- Welcome Message -->
+<h1>Hey, {{ username }}!</h1>
+<p class="text-center">Welcome to the world of tree-magic!</p>
+{% endblock %}
+
+{% block form %}
+<div class="text-center leaf-form-container">
+    <!-- Form to upload image section -->
+    <form id="upload-form" class="p-1 text-center leaf-form m-5" enctype="multipart/form-data">
+        <h3 class="p-2 mt-5">Upload the image of the leaf for identification.</h3>
+        <div class="row m-5">
+            <input type="file" class="form-control" name="imagefile" accept="image/*">
+        </div>
+
+        <button class="btn btn-success m-3 btn-lg btn-zoom" type="submit">Identify</button>
+    </form>
+    <!-- Error Message section -->
+    <div id="error-alert-container"></div>
+</div>
+
+<!-- Loading section -->
+<div id="loading-container" style="display: none;">
+    
+    <div id="bird-animation" class="bird"></div>
+    <audio id="leaves-audio" src="static/css/vectors/birds_singing.mp3" preload="auto" loop></audio>
+</div>
+
+<!-- Display Image section -->
+<!-- <div class="text-center" id="image-container">
+    <img id="uploaded-image" src="" alt="" class="img-fluid text-center">
+</div> -->
+<div class="card mb-4" id="image-container">
+    <img id="uploaded-image" src="" alt="" class="card-img-top">
+    <!-- <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text"></p>        
+    </div> -->
+</div>
+
+<!-- Display Result section -->
+<div id="result" class="p-5 m-3"></div>
+
+<!-- Buttons to external websites -->
+<div id="btn-container" class="buttons-container text-center mt-3">
+    <div class="buttons-container text-center mt-3">
+        <a id="nursery" class="btn btn-success" target="_blank">Shop at Nursery!</a>
+    </div>
+</div>
+
+{% endblock %}

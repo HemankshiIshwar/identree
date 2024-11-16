@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block title %}Identree | My Diary{% endblock %}
+
+{% block content %}
+<h1>My Diary</h1>
+{% if activities %}
+<div class="container">
+    <div class="row">
+        {% for activity in activities %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ activity.image_path|replace('\\', '/') }}" class="card-img-top" alt="Activity Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ activity.result }}</h5>
+                    <p class="card-text">{{ activity.timestamp }}</p>
+
+                    <!-- <button class="btn btn-secondary" onclick="shareWithFriend('{{ activity.id }}')">Share with a Friend</button> -->
+                    <button class="btn btn-success" onclick="openModal('{{ activity.id }}')">Share <i
+                            class="fas fa-solid fa-paper-plane"></i></button>
+                    <form id="shareForm{{ activity.id }}"
+                        action="{{ url_for('share_activity', activity_id=activity.id) }}" method="POST"
+                        style="display: none;">
+                        <input type="hidden" name="friend_email" value="">
+                        <input type="hidden" name="message" value="">
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+<!-- Display the empty message if there are no activities -->
+<div class="alert text-center alert-warning">
+    {{ empty_msg }}
+</div>
+{% endif %}
+
+
+<!-- Modal -->
+<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="shareModalLabel">Share with a Friend</h5>
+                <button type="button" class="close" id="closeCross" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="shareForm" method="POST">
+                    <div class="form-group">
+                        <label for="friend_email">Friend's Email:</label>
+                        <input type="email" class="form-control" id="friend_email" name="friend_email" required>
+                        <span id="emailValidationMessage" class="alert-text alert-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea class="form-control" id="message" name="message"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="closeModal">Close</button>
+                <button type="button" class="btn btn-success" onclick="sendEmail()">Send Email</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

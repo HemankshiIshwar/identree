@@ -1,0 +1,84 @@
+[
+    {
+      "question_id": 1,
+      "question": "Which tree is this?",
+      "description": "There are only three tree species native to the UK that have pinnate (feather-shaped) leaves. Do you recognise this one?",
+      "image_path": "images/rowan.jpg",
+      "options": ["Rowan", "Elder", "Ash"],
+      "correct_option": 0,
+      "explanation": "It's rowan (Sorbus aucuparia). This tree is also known as mountain ash because it has leaves that are similar to common ash but can grow in upland areas. You'll often see it planted as a street tree. In summer you can tell it apart from ash and elder as it has clusters of bright orange-red berries."
+    },
+    {
+      "question_id": 2,
+      "question": "Which tree is this?",
+      "description": "There are several native members of this genus in the UK.",
+      "image_path": "images/birdcherry.jpg",
+      "options": ["Bullace", "Blackthorn", "Bird cherry"],
+      "correct_option": 2,
+      "explanation": "It's bird cherry (Prunus padus). Its fruits develop into reddish-black bitter cherries in summer. There are other types of cherry that you'll find growing in the UK (like wild cherry and sour cherry) but their fruits tend to be red and have longer stalks."
+    },
+    {
+        "question_id": 3,
+        "question": "Which tree is this?",
+        "description": "Relatives of this tree are normally associated with autumn colour and syrup.",
+        "image_path": "images/fieldmaple.jpg",
+        "options": ["Sycamore","Field maple", "Wild service tree"],
+        "correct_option": 1,
+        "explanation": "It's field maple (Acer campestre). It's the UK's only native maple tree. Sycamore is similar and also a type of maple but although sycamore is widespread, it isn't native. You can tell these two species apart in summer by their winged fruits (helicopters). The wings are more horizontal on field maple. On sycamore they point more steeply downwards."
+    },
+    {
+        "question_id": 4,
+        "question": "Which native oak is this?",
+        "description": "There are two oak species native to the UK. But do you know how to tell the difference?",
+        "image_path": "images/englishoak.jpg",
+        "options": ["English Oak", "Sessile Oak"],
+        "correct_option": 0,
+        "explanation": "It's English oak (Quercus robur) - also known as pedunculate oak. You can tell the difference between this species and the other native oak, sessile oak (Quercus petraea), by looking at the stalks on the acorns. English oak has acorns on stalks (callled peduncles - like you see in this picture) whereas sessile oak has acorns that are stalkless (or on very short stalks)."
+    },
+    {
+        "question_id": 5,
+        "question": "Which tree is this?",
+        "description": "It has heart-shaped leaves that are often covered in sweet honeydew from aphids in summer. You'll see it  along tree lined streets, parks and mixed woodland.",
+        "image_path": "images/largeleavedlime.jpg",
+        "options": ["Hazel", "Large-leaved lime", "Wych elm"],
+        "correct_option": 1,
+        "explanation": "It's large-leaved lime (Tilia platyphyllos). Its vibrantly green, papery leaves have little teeth along the edge. In summer you'll see its small fruits which are rounded with a pointed tip and are attached to a structure that looks like a leaf (but is actually a bract)."
+    },
+    {
+        "question_id": 6,
+        "question": "Which tree is this?",
+        "description": "It's a broadleaf tree yet it appears to have cones.",
+        "image_path": "images/alder.jpg",
+        "options": ["Juniper", "Hazel", "Alder"],
+        "correct_option": 2,
+        "explanation": "It's alder (Alnus glutinosa). It has unmistakable cone-like fruits which are green in summer but become brown and woody in winter. It often grows around lakes, rivers and ponds."
+    },
+    {
+        "question_id": 7,
+        "question": "Which tree is this?",
+        "description": "It is commonly grown in parks and gardens, though is quite rare in the wild.",
+        "image_path": "images/whitebeam.jpg",
+        "options": ["Whitebeam", "Rowan", "Hawthorn"],
+        "correct_option": 0,
+        "explanation": "It's whitebeam (Sorbus aria). Although a few native trees have clusters of red berries in summer, it's not easy to mistake this for anything else. It has oval leaves with white undersides."
+    },
+    {
+        "question_id": 8,
+        "question": "Which tree is this?",
+        "description": "It's a conifer but it doesn't have cones.",
+        "image_path": "images/yew.jpg",
+        "options": ["Box", "Cypress", "Yew"],
+        "correct_option": 2,
+        "explanation": "It's yew (Taxus baccata). Unlike many other conifers, yew doesn't bear its seeds in a cone. Instead, each seed is enclosed in a red, fleshy, berry-like structure known as an aril which is open at the tip. In the photo, the fruits are green and not yet ripe. You'll often see it growing in parks, gardens and churchyards."
+    },
+    {
+        "question_id": 9,
+        "question": "Which tree is this?",
+        "description": "Its seeds have papery green wings.",
+        "image_path": "images/hornbeam.jpg",
+        "options": ["Beech", "Hornbeam", "Ash"],
+        "correct_option": 1,
+        "explanation": "It's hornbeam (Carpinus betulus). Its leaves are often confused with common beech, but look at the leaf edges. In hornbeam they are doubly serrated, but beech leaves have wavy edges. In summer, hornbeam is easy to recognise as their seeds are held in papery bracts that have three lobes."
+    }
+  ]
+  

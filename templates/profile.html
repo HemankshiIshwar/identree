@@ -1,0 +1,126 @@
+{% extends 'layout.html' %}
+
+{% block title %}Identree | Profile{% endblock %}
+
+{% block content %}
+<h1>Profile</h1>
+
+<div class="card user-card">
+    <div class="card-block d-flex flex-wrap align-items-center">
+        <div class="profile-avatar m-3">
+            <img id="profileImage" src="{{ url_for('static', filename='avatars/tree_mascot_1.jpeg') }}"
+                alt="Profile-Photo" class="custom-profile-image">
+        </div>
+
+        <div class="profile-details ml-md-3 m-5">
+            <div class="m-5">
+                <i class="fas fa-user mr-2"></i>
+                <strong>Name:</strong> {{ account['fullname'] }}
+            </div>
+            <div class="m-5">
+                <i class="fas fa-user-tag mr-2"></i>
+                <strong>Username:</strong> {{ account['username'] }}
+            </div>
+            <div class="m-5">
+                <i class="fas fa-envelope mr-2"></i>
+                <strong>Email:</strong> {{ account['email'] }}
+            </div>
+            <div class="p-5">
+                <!-- Edit Avatar Button -->
+                <button id="editAvatarBtn" class="btn btn-success btn-large btn-zoom" data-toggle="modal" data-target="#avatarModal">
+                    Edit Avatar
+                </button>
+            </div>
+        </div>
+
+
+            <!-- Avatar Modal -->
+            <div class="modal fade" id="avatarModal" tabindex="-1" role="dialog" aria-labelledby="avatarModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="avatarModalLabel">Select a new avatar:</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row md-4" id="avatarOptionsRow">
+                                <!-- Avatar Options will be dynamically added here -->
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button id="updateAvatarBtnModal" class="btn btn-success">Update Avatar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Template for Avatar Options (hidden) -->
+            <div id="avatarOptionTemplate" style="display: none;">
+                <div class="md-4">
+                    <div class="card">
+                        <label class="card-body">
+                            <input type="radio" name="newAvatar" value="">
+                            <img src="" alt="" class="card-img-top">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+
+<script>
+    // Get references to DOM elements
+    const profileImage = document.getElementById('profileImage');
+    const avatarOptionsRow = document.getElementById('avatarOptionsRow');
+    const updateAvatarBtnModal = document.getElementById('updateAvatarBtnModal');
+    const avatarOptionTemplate = document.getElementById('avatarOptionTemplate');
+
+    // Number of avatar images
+    const numAvatarImages = 5;
+
+    // Function to populate avatar options
+    function populateAvatarOptions() {
+        for (let i = 1; i <= numAvatarImages; i++) {
+            // Clone the template
+            const newAvatarOption = avatarOptionTemplate.cloneNode(true);
+            newAvatarOption.style.display = 'block';
+            // Update the dynamic content
+            const avatarFilename = `tree_mascot_${i}.jpeg`;
+            newAvatarOption.querySelector('input[type="radio"]').value = avatarFilename;
+            newAvatarOption.querySelector('img').src = `static/avatars/${avatarFilename}`; 
+            newAvatarOption.querySelector('img').alt = `Avatar ${i}`;
+
+            // Append the populated option to the row
+            avatarOptionsRow.appendChild(newAvatarOption);
+        }
+    }
+
+    // Add click event listener to the Update Avatar button (in the modal)
+    updateAvatarBtnModal.addEventListener('click', () => {
+        // Find the selected avatar option in the modal
+        const selectedAvatarModal = document.querySelector('input[name="newAvatar"]:checked');
+
+        if (selectedAvatarModal) {
+            // Get the selected avatar's value (filename)
+            const newAvatarFilenameModal = selectedAvatarModal.value;
+
+            // Update the profile image source
+            profileImage.src = `static/avatars/${newAvatarFilenameModal}`;
+
+        }
+
+        // Close the modal
+        $('#avatarModal').modal('hide');
+    });
+
+    // Populate avatar options when the page loads
+    populateAvatarOptions();
+
+</script>
+{% endblock %}

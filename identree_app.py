@@ -458,5 +458,5 @@ def results():
 if __name__ == '__main__':
 #     app.run(port=9000, debug=True)
 # Change for Render deployment
-port = int(os.environ.get("PORT", 5000)) 
-    app.run(host='0.0.0.0', port=port)
+    port = int(os.environ.get("PORT", 9000))
+    app.run(host="0.0.0.0", port=port, debug=True)

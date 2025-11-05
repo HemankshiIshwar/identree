@@ -34,10 +34,18 @@ UPLOAD_FOLDER = 'uploads'
 db_pool = psycopg2.pool.SimpleConnectionPool(
     1,  # minconn: Minimum number of connections to create in the pool
     5,  # maxconn: Maximum number of connections in the pool
-    dbname="identree",
-    user="postgres",
-    password="Gamechanger",
-    host="localhost"
+    # For local environment:
+    # dbname="identree",
+    # user="postgres",
+    # password="Gamechanger",
+    # host="localhost"
+
+    # For Render deployemnt:
+    dbname=os.environ.get("DB_NAME"),
+    user=os.environ.get("DB_USER"),
+    password=os.environ.get("DB_PASSWORD"),
+    host=os.environ.get("DB_HOST"),
+    port=os.environ.get("DB_PORT", 5432)
 )
 
 # Referred documentation for structure of app
@@ -46,6 +54,8 @@ app.secret_key = 'dev-leicester'
 
 # Configure the upload folder in your app
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+if not os.path.exists(app.config['UPLOAD_FOLDER']):
+    os.makedirs(app.config['UPLOAD_FOLDER'])
 
 @app.teardown_request
 def close_db_connection(exception):

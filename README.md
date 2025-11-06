@@ -25,8 +25,11 @@
 
 To set up the Identree web app locally, follow these steps:
 
-1. **Setup the Repository:** Setup the 
-
+1. **Setup the Repository:** Clone the Identree repository from GitHub to your local machine. Open a terminal/command prompt and run:
+```
+git clone https://github.com/HemankshiIshwar/identree.git
+cd identree
+```
 2. **Create a Virtual Environment:** It's recommended to use a virtual environment to manage project dependencies.
 
    ```

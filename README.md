@@ -42,7 +42,7 @@ To set up the Identree web app locally, follow these steps:
 
 4. **Database Setup:** Create and configure the database. You can do this by setting up your database connection in the app configuration. Update the file with your database credentials.
 
-5. **Model Setup:** Place your trained model file (model.h5) in the `model` folder.
+5. **Model Setup:** Place the trained model file (model.h5) in the `model` folder.
 
 6. **Run the Application:**
 
@@ -63,7 +63,7 @@ To set up the Identree web app locally, follow these steps:
 
 - **templates:** Contains HTML files used for rendering web pages.
 - **static:** Contains CSS, JavaScript, and image files used for styling and interactivity.
-- **model:** Place your trained machine learning model (model.h5) in this folder.
+- **model:** Place the trained machine learning model (model.h5) in this folder.
 - **database:** Contains the database setup scripts and models for users, user activity, questions, and answers.
 - **app.py:** The main Flask application file.
 - **config.py:** Configuration settings for the application.
